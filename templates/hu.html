@@ -1,0 +1,79 @@
+<div class="container">
+	<h2>Modal Example</h2>
+	<!-- Trigger the modal with a button -->
+	<img type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+  
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+	  <div class="modal-dialog">
+	  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Modal Header</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>Some text in the modal.</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+		
+	  </div>
+	</div>
+	
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <tr scope="row">
+	<td scope="col">
+		<br>
+					<div class="row">
+						<div class="col-md-4">
+							<img onclick="toggle()" src="{{ image.image.url }}" align="left" width="600px">
+							<br>
+					</div>
+					</div>
+	</td>
+	<td scope="col">
+			<div style="display:none; text-align: center; width: 100%;" class="col-md-9" id="image_details">
+					<p>
+						<br>
+						<span style="color:blueviolet;">
+								Name:
+						</span>
+						<br>
+						{{image.image_name}}
+						<br>
+						<span style="color:blueviolet;">
+								Description:
+						</span>
+						<br>
+						{{image.image_description}}
+						<br>
+						
+						<div id="image_link" style="color:black;">
+							<input style="color: deeppink;" type="text" value="{{image.image_link}}" id="myInput">
+							<!-- The button used to copy the text -->
+							<button onclick="myFunction()">
+								Copy
+							</button>
+						</div>
+					</p>
+				</div>
+	</td>
+</tr>
