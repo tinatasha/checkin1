@@ -3,92 +3,94 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body style="background-color: black; color: white;">
-		<script>
-				function myFunction() {
-					/* Get the text field */
-					var copyText = document.getElementById("myInput");
-					/* Select the text field */
-					copyText.select();
-					copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-					/* Copy the text inside the text field */
-					document.execCommand("copy");
-					/* Alert the copied text */
-				}
-				function toggle() {
-					var x = document.getElementById("image_details");
-					if (x.style.display === "none") {
-						x.style.display = "block";
-					} else {
-						x.style.display = "none";
-					}
-				}
-				function toggle() {
-					var x = document.getElementById("search_images");
-					if (x.style.display === "none") {
-						x.style.display = "block";
-					} else {
-						x.style.display = "none";
-					}
-				}
-			</script>
-<div class="container">
-  <!-- Trigger the modal with a button -->
-  {% for image in images %}
-  <div class="w3-row-padding">
-		<div class="w3-col s4">
-				<img src="{{ image.image.url }}" width="500px" height="500px" alt="My image"/>
-		</div>
-		<div class="w3-col s4">
-				<img src="{{ image.image.url }}" width="500px" height="500px" alt="My image"/>
-				<button style="margin-top: 20px; margin-bottom: 20px;" type="button" class="btn btn-info btn-lg block" data-toggle="modal" data-target="#myModal"width="700px" >View Details</button>
-		</div>
-		<div class="w3-col s4">
-				<img src="{{ image.image.url }}" width="500px" height="500px" alt="My image"/>
-		</div>
-	  </div>
-  
- <div>
-		
-		
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h1 class="modal-title">{{image.image_name}}</h1>
-        </div>
-        <div class="modal-body">
-          <p style="color: black;">
-			  Description:
-			  <br>
-				{{image.image_description}}
-		  </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
-{% endfor %}
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: black; color: white;">
+	
+		<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+	
+	
+	
+	<div class="container">
+		<!-- Trigger the modal with a button -->
+		{% for image in images %}
+		<div class="w3-row-padding">
+			<div class="w3-col s4">
+				<img src="{{ image.image.url }}" width="600px" height="600px" alt="My image" />
+			</div>
+			<div class="w3-col s4">
+				<img src="{{ image.image.url }}" width="500px" height="500px" alt="My image" />
+				
+			</div>
+			<div class="w3-col s4">
+				<img src="{{ image.image.url }}" width="400px" height="400px" alt="My image" />
+			</div>
+			
+		</div>
+		<button style="margin-top: 20px; margin-bottom: 20px; display: block;
+		width: 100%;
+		border: none;
+		margin-left: 70px;
+		background-color: gray;
+		padding: 14px 28px;
+		font-size: 16px;
+		cursor: pointer;
+		text-align: center;" type="button" class="btn btn-info btn-lg block" data-toggle="modal" data-target="#myModal"
+			width="700px">View Details</button>
+		<div>
+
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h1 class="modal-title">{{image.image_name}}</h1>
+						</div>
+						<div class="modal-body">
+							<p style="color: black;">
+								Description:
+								<br>
+								{{image.image_description}}
+								<br>
+								<input type="text" value="{{image.image_link}}" id="myInput">
+								<br>
+								<button onclick="myFunction()">Copy text</button>
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		{% endfor %}
 
 </body>
+
 </html>
